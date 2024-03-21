@@ -1,9 +1,26 @@
-﻿namespace RazorHotel.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace RazorHotel.Models
 {
+    /// <summary>
+    /// En klasse der reprensentere et hotel og gør brug af ICompareble interfacet
+    /// </summary>
     public class Hotel : IComparable<Hotel>
     {
+        /// <summary>
+        /// Hotellets primære nøgle og repræsentere hotelnummeret
+        /// </summary>
+        [Required(ErrorMessage = "id er påkrævet")]
         public int Hotel_No { get; set; }
+        /// <summary>
+        /// Hotellets Navn
+        /// </summary>
+        [Required(ErrorMessage = "navn er påkrævet")]
         public String Name { get; set; }
+        /// <summary>
+        /// Hotellets Addresse
+        /// </summary>
+        [Required(ErrorMessage="Adresse er påkrævet")]
         public String Address { get; set; }
 
         public Hotel()
@@ -21,6 +38,12 @@
         {
             return $"{nameof(Hotel_No)}: {Hotel_No}, {nameof(Name)}: {Name}, {nameof(Address)}: {Address}";
         }
+
+        /// <summary>
+        /// Tjekker om hotellets nummer, navn og addresse er den samme som objektet den får ind som parmeter
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns>true hvis objektet er et hotel med samme værdier, ellers false</returns>
         public override bool Equals(object? obj)
         {
             if (obj == null) return false;
@@ -32,6 +55,11 @@
             ) return true;
             return false;
         }
+        /// <summary>
+        /// Sammenligner med hotellets navn
+        /// </summary>
+        /// <param name="hotel"></param>
+        /// <returns>-1 hvis den kommer før parameterinput, 0 hvis samme værdi, 1 hvis den kommer efter parameter input</returns>
         public int CompareTo(Hotel? hotel)
         {
             return Name.CompareTo(hotel.Name);

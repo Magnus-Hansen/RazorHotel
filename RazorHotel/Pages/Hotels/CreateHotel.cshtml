@@ -11,14 +11,17 @@
     <div class="form-group">
         <label asp-for="@Model.NewHotel.Hotel_No" class="control-label"></label>
         <input asp-for="@Model.NewHotel.Hotel_No" class="form-control" />
+        <span asp-validation-for="@Model.NewHotel.Hotel_No" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="@Model.NewHotel.Name" class="control-label"></label>
         <input asp-for="@Model.NewHotel.Name" class="form-control" />
+        <span asp-validation-for="@Model.NewHotel.Name" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="@Model.NewHotel.Address" class="control-label"></label>
         <input asp-for="@Model.NewHotel.Address" class="form-control" />
+        <span asp-validation-for="@Model.NewHotel.Address" class="text-danger"></span>
     </div>
     <div class="form-group">
         <input type="submit" value="Create a hotel" class="btn btn-primary" />
