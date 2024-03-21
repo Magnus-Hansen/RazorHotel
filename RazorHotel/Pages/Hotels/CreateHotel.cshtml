@@ -1,0 +1,30 @@
+﻿@page
+@model RazorHotel.Pages.Hotels.CreateHotelModel
+@{
+    ViewData["Title"] = "Create hotel";
+}
+
+<h1>Create hotel</h1>
+
+<form method="post">
+
+    <div class="form-group">
+        <label asp-for="@Model.NewHotel.Hotel_No" class="control-label"></label>
+        <input asp-for="@Model.NewHotel.Hotel_No" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.NewHotel.Name" class="control-label"></label>
+        <input asp-for="@Model.NewHotel.Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.NewHotel.Address" class="control-label"></label>
+        <input asp-for="@Model.NewHotel.Address" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create a hotel" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>

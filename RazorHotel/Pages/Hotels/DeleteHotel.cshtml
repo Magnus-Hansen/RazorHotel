@@ -1,0 +1,16 @@
+﻿@page
+@model RazorHotel.Pages.Hotels.DeleteHotelModel
+@{
+    ViewData["Title"] = "Delete hotel";
+}
+
+<h1>Delete hotel</h1>
+<form method="post">
+    <div class="form-group">
+        <label>Hotel no</label> : @Model.DeleteHotel.Hotel_No <br />
+        <label>Hotel name</label> : @Model.DeleteHotel.Name <br />
+        <label>Hotel Address</label> : @Model.DeleteHotel.Address <br />
+
+        <input type="submit" asp-page-handler="Delete" asp-route-hotel_No="@Model.DeleteHotel.Hotel_No" value="Delete hotel" />
+    </div>
+</form>

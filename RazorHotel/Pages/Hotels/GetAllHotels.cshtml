@@ -1,0 +1,72 @@
+﻿@page
+@model RazorHotel.Pages.Hotels.GetAllHotelsModel
+@{
+    ViewData["Title"] = "GetAllHotels";
+}
+
+
+<h4 style="color:aquamarine"> List of hotels</h4>
+<a asp-page="/Hotels/CreateHotel">Create</a>|
+
+<form method="get">
+    <p>
+        Search: <input type="text" asp-for="@Model.FilterCriteria" onchange="this.form.submit()"/> 
+        <div class="form-group">
+            <label class="custom-control-label">Sortering</label></br>
+            <input type="radio" asp-for="@Model.SortOrder" value="Hotel_No" onclick="this.form.submit()" /> hotelNummer
+            <input type="radio" asp-for="@Model.SortOrder" value="Name" onclick="this.form.submit()" /> navn
+            <input type="radio" asp-for="@Model.SortOrder" value="Address" onclick="this.form.submit()" /> addresse
+        </div>
+
+        <div class="form-group">
+            <label class="custom-control-label">Soty Order</label> <br />
+            <select asp-for="SortOrderAscDesc" onchange="this.form.submit()">
+                <option value="Ascending">Ascending</option>
+                <option value="Descending">Descending</option>
+            </select>
+        </div>
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Hotel No
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Address
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Hotels.Count() != 0)
+        {
+            @foreach (var item in Model.Hotels)
+            {
+                <tr>
+                    <td>
+                        @item.Hotel_No
+                    </td>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Address
+                    </td>
+                    <td>
+                        <p>
+                            <a asp-page="/Hotels/DeleteHotel" asp-route-hotel_No="@item.Hotel_No">Delete</a>|
+                            <a asp-page="/Hotels/UpdateHotel" asp-route-hotel_No="@item.Hotel_No">Edit</a>|
+                            <a asp-page="/Rooms/CreateRoom" asp-route-hotel_No="@item.Hotel_No">Create new room</a>|
+                            <a asp-page="/Rooms/GetAllRooms" asp-page-handler="MyRooms" asp-route-hotel_No="@item.Hotel_No">Rooms in hotel</a>
+                        </p>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

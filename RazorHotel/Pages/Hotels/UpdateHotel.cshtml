@@ -1,0 +1,25 @@
+﻿@page
+@model RazorHotel.Pages.Hotels.UpdateHotelModel
+@{
+    ViewData["Title"] = "Update hotel";
+}
+
+<h1>Update Hotel</h1>
+
+<form method="post">
+
+    <input type="hidden" asp-for="@Model.HotelToUpdate.Hotel_No" />
+    <div class="form-group">
+        <label asp-for="@Model.HotelToUpdate.Name" class="control-label"></label>
+        <input asp-for="@Model.HotelToUpdate.Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.HotelToUpdate.Address" class="control-label"></label>
+        <input asp-for="@Model.HotelToUpdate.Address" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Update a hotel" asp-page-handler="Update" class="btn btn-primary" />
+        <input type="submit" value="Delete a hotel" asp-page-handler="Delete" class="btn btn-primary" />
+    </div>
+</form>
