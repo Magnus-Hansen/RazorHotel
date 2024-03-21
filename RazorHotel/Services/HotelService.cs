@@ -10,7 +10,7 @@ namespace RazorHotel.Services
         private string queryString = "SELECT Hotel_No, Name, Address FROM Hotel";
         private string insertSql = "INSERT INTO Hotel VALUES(@Id, @Name, @Address)";
         private string _getSqlById = "SELECT * FROM Hotel WHERE Hotel_No=@Id";
-        private string _getSqlByName = "SELECT * FROM Hotel WHERE Name=@Name";
+        private string _getSqlByName = "SELECT * FROM Hotel WHERE Name LIKE @Name";
         private string _deleteSql = "DELETE FROM Hotel WHERE Hotel_No=@Id";
         private string _updateSql = "UPDATE Hotel SET Hotel_No=@Id, Name=@Name, Address=@Address WHERE Hotel_No=@OldId";
         public bool CreateHotel(Hotel hotel)
@@ -155,7 +155,7 @@ namespace RazorHotel.Services
                 try
                 {
                     SqlCommand command = new SqlCommand(_getSqlByName, connection);
-                    command.Parameters.AddWithValue("@Name", name);
+                    command.Parameters.AddWithValue("@Name", "%"+name+"%");
                     command.Connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
